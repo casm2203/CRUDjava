@@ -1052,7 +1052,7 @@ public class CrearPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_identificacion1KeyTyped
 
     public void mostrar() {
-        DefaultTableModel modelo = (DefaultTableModel) tablaDatosPersonas.getModel();
+        
         Object matriz[][] = new Object[Empleados.size()][19];
 
         for (int i = 0; i < Empleados.size(); i++) {
