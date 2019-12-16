@@ -20,6 +20,7 @@ public class CrearPersonas extends javax.swing.JFrame {
 
     Empleado e1 = new Empleado("Cristian", "suarez", 1140876403, "2019-12-11", "calle 54 32", "cristian@gmail.com", "masculino", 2, "soltero", "profesional", "ingeniero sistemas", "soporte", "2019-12-11", "2019-12-11", "indefinido", "salud total", "Sura", "porvenir", "compensiones");
     Empleado e2 = new Empleado("Andres", "martinez", 1540854605, "2019-04-11", "calle 23 65", "andres@gmail.com", "masculino", 2, "soltero", "tecnico", "ingeniero ambiental", "comercial", "2019-05-12", "2019-10-09", "obra y labor", "coosalud", "arlsani", "cesantis", "porloir");
+    
     ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
 
     Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
@@ -956,48 +957,52 @@ public class CrearPersonas extends javax.swing.JFrame {
 
         } else {
             int idBuscar = Integer.parseInt(txt_buscar.getText());
+            int existe = 0;
             for (int i = 0; i < Empleados.size(); i++) {
                 if (idBuscar == Empleados.get(i).getId()) {
-                    System.out.println("si existe el numero");
-                    txt_nombre1.setText(Empleados.get(i).getNombre());
-                    txt_apellido1.setText(Empleados.get(i).getApellido());
-                    txt_identificacion1.setText(Integer.toString(Empleados.get(i).getId()));
-                    JDC_FNac1.setDate(null);
-                    JDC_FIng1.setDate(null);
-                    JDC_FSalida1.setDate(null);
-                    txt_direccion1.setText(Empleados.get(i).getDireccion());
-                    txt_correo1.setText(Empleados.get(i).getEmail());
-                    spn_nHijos1.setValue(Empleados.get(i).getNHijos());
-                    txt_nivelEducativo1.setText(Empleados.get(i).getNivelEducativo());
-                    txt_profesion1.setText(Empleados.get(i).getProfesion());
-                    txt_cargo1.setText(Empleados.get(i).getCargo());
-                    txt_eps1.setText(Empleados.get(i).getEPS());
-                    txt_arl1.setText(Empleados.get(i).getARL());
-                    txt_cesantias1.setText(Empleados.get(i).getCesantias());
-                    txt_pension1.setText(Empleados.get(i).getPension());
-                    System.out.println("este es el id" + i);
+                    existe = 1;
                     indice_empleado = i;
-                    break;
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "La identificacion ingresada no existe", "Warning", JOptionPane.WARNING_MESSAGE);
-                    txt_nombre1.setText("");
-                    txt_apellido1.setText("");
-                    txt_identificacion1.setText("");
-                    JDC_FNac1.setDate(null);
-                    JDC_FIng1.setDate(null);
-                    JDC_FSalida1.setDate(null);
-                    txt_direccion1.setText("");
-                    txt_correo1.setText("");
-                    spn_nHijos1.setValue(0);
-                    txt_nivelEducativo1.setText("");
-                    txt_profesion1.setText("");
-                    txt_cargo1.setText("");
-                    txt_eps1.setText("");
-                    txt_arl1.setText("");
-                    txt_cesantias1.setText("");
-                    txt_pension1.setText("");
-                    break;
                 }
+            }
+
+            if (existe == 1) {
+                System.out.println("si existe el numero");
+                txt_nombre1.setText(Empleados.get(indice_empleado).getNombre());
+                txt_apellido1.setText(Empleados.get(indice_empleado).getApellido());
+                txt_identificacion1.setText(Integer.toString(Empleados.get(indice_empleado).getId()));
+                JDC_FNac1.setDate(null);
+                JDC_FIng1.setDate(null);
+                JDC_FSalida1.setDate(null);
+                txt_direccion1.setText(Empleados.get(indice_empleado).getDireccion());
+                txt_correo1.setText(Empleados.get(indice_empleado).getEmail());
+                spn_nHijos1.setValue(Empleados.get(indice_empleado).getNHijos());
+                txt_nivelEducativo1.setText(Empleados.get(indice_empleado).getNivelEducativo());
+                txt_profesion1.setText(Empleados.get(indice_empleado).getProfesion());
+                txt_cargo1.setText(Empleados.get(indice_empleado).getCargo());
+                txt_eps1.setText(Empleados.get(indice_empleado).getEPS());
+                txt_arl1.setText(Empleados.get(indice_empleado).getARL());
+                txt_cesantias1.setText(Empleados.get(indice_empleado).getCesantias());
+                txt_pension1.setText(Empleados.get(indice_empleado).getPension());
+                System.out.println("este es el id" + indice_empleado);
+
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La identificacion ingresada no existe", "Warning", JOptionPane.WARNING_MESSAGE);
+                txt_nombre1.setText("");
+                txt_apellido1.setText("");
+                txt_identificacion1.setText("");
+                JDC_FNac1.setDate(null);
+                JDC_FIng1.setDate(null);
+                JDC_FSalida1.setDate(null);
+                txt_direccion1.setText("");
+                txt_correo1.setText("");
+                spn_nHijos1.setValue(0);
+                txt_nivelEducativo1.setText("");
+                txt_profesion1.setText("");
+                txt_cargo1.setText("");
+                txt_eps1.setText("");
+                txt_arl1.setText("");
+                txt_cesantias1.setText("");
+                txt_pension1.setText("");
             }
         }
 
@@ -1052,7 +1057,7 @@ public class CrearPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_identificacion1KeyTyped
 
     public void mostrar() {
-        
+
         Object matriz[][] = new Object[Empleados.size()][19];
 
         for (int i = 0; i < Empleados.size(); i++) {
