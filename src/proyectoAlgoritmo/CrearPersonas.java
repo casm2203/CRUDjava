@@ -949,15 +949,12 @@ public class CrearPersonas extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_identificacionKeyTyped
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        
-        boolean encontrado = false;
-       
-        if (txt_buscar.getText().isEmpty() && !encontrado ) {
-            
-            JOptionPane.showMessageDialog(rootPane, "Por favor, verificar el campo de identificación", "Warning", JOptionPane.WARNING_MESSAGE);
-            
+
+        if (txt_buscar.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Por favor, verificar el campo de identificación está vacío", "Warning", JOptionPane.WARNING_MESSAGE);
+
         } else {
-            encontrado = true;
             int idBuscar = Integer.parseInt(txt_buscar.getText());
             for (int i = 0; i < Empleados.size(); i++) {
                 if (idBuscar == Empleados.get(i).getId()) {
@@ -983,6 +980,22 @@ public class CrearPersonas extends javax.swing.JFrame {
                     break;
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "La identificacion ingresada no existe", "Warning", JOptionPane.WARNING_MESSAGE);
+                    txt_nombre1.setText("");
+                    txt_apellido1.setText("");
+                    txt_identificacion1.setText("");
+                    JDC_FNac1.setDate(null);
+                    JDC_FIng1.setDate(null);
+                    JDC_FSalida1.setDate(null);
+                    txt_direccion1.setText("");
+                    txt_correo1.setText("");
+                    spn_nHijos1.setValue(0);
+                    txt_nivelEducativo1.setText("");
+                    txt_profesion1.setText("");
+                    txt_cargo1.setText("");
+                    txt_eps1.setText("");
+                    txt_arl1.setText("");
+                    txt_cesantias1.setText("");
+                    txt_pension1.setText("");
                     break;
                 }
             }
@@ -992,18 +1005,19 @@ public class CrearPersonas extends javax.swing.JFrame {
 
     private void btn_guardar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_guardar1ActionPerformed
 
-        if (txt_identificacion.getText().isEmpty()) {
+        if (txt_identificacion1.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(rootPane, "Por favor, verificar el campo de identificación", "Warning", JOptionPane.WARNING_MESSAGE);
 
-        } else if (txt_nombre.getText().isEmpty() || txt_apellido.getText().isEmpty() || cbx_genero.getSelectedItem().toString().isEmpty() || txt_direccion.getText().isEmpty() || JDC_FNac.getDate() == null || txt_correo.getText().isEmpty()
-                || cbx_estadoCivil.getSelectedItem().toString().isEmpty() || txt_nivelEducativo.getText().isEmpty() || txt_profesion.getText().isEmpty() || txt_cargo.getText().isEmpty() || JDC_FIng.getDate() == null || JDC_FSalida.getDate() == null || cbx_tipoContrato.getSelectedItem().toString().isEmpty()
-                || txt_eps.getText().isEmpty() || txt_arl.getText().isEmpty() || txt_cesantias.getText().isEmpty() || txt_pension.getText().isEmpty()) {
+        } else if (txt_nombre1.getText().isEmpty() || txt_apellido1.getText().isEmpty() || cbx_genero1.getSelectedItem().toString().isEmpty() || txt_direccion1.getText().isEmpty() || JDC_FNac1.getDate() == null || txt_correo1.getText().isEmpty()
+                || cbx_estadoCivil1.getSelectedItem().toString().isEmpty() || txt_nivelEducativo1.getText().isEmpty() || txt_profesion1.getText().isEmpty() || txt_cargo1.getText().isEmpty() || JDC_FIng1.getDate() == null || JDC_FSalida1.getDate() == null || cbx_tipoContrato1.getSelectedItem().toString().isEmpty()
+                || txt_eps1.getText().isEmpty() || txt_arl1.getText().isEmpty() || txt_cesantias1.getText().isEmpty() || txt_pension1.getText().isEmpty()) {
 
             JOptionPane.showMessageDialog(rootPane, "Por favor llene todos los campos", "Warning", JOptionPane.WARNING_MESSAGE);
-        } else if (!pattern.matcher(txt_correo.getText()).find()) {
+        } else if (!pattern.matcher(txt_correo1.getText()).find()) {
             JOptionPane.showMessageDialog(rootPane, "El correo ingresado no es valido", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {
+
             //actualiza valores 
             Empleados.get(indice_empleado).setNombre(txt_nombre1.getText());
             Empleados.get(indice_empleado).setApellido(txt_apellido1.getText());
@@ -1026,7 +1040,7 @@ public class CrearPersonas extends javax.swing.JFrame {
             Empleados.get(indice_empleado).setPension(txt_pension1.getText());
             JOptionPane.showMessageDialog(rootPane, "Los datos se han guardado exitosamente.", "Exito", JOptionPane.INFORMATION_MESSAGE);
         }
-        //indice_empleado
+
     }//GEN-LAST:event_btn_guardar1ActionPerformed
 
     private void txt_direccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccion1ActionPerformed
