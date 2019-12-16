@@ -25,6 +25,7 @@ public class CrearPersonas extends javax.swing.JFrame {
 
     Pattern pattern = Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     int indice_empleado;
+    int indice_borrar;
 
     /**
      * Creates new form CrearPersonas
@@ -92,6 +93,9 @@ public class CrearPersonas extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaDatosPersonas = new javax.swing.JTable();
         ActualizarLista = new javax.swing.JButton();
+        jLabel40 = new javax.swing.JLabel();
+        txt_buscar_borrar = new javax.swing.JTextField();
+        btn_borrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
@@ -140,7 +144,7 @@ public class CrearPersonas extends javax.swing.JFrame {
         btn_guardar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Administrador recursos humanos");
+        setTitle("Gestor de empleados-Cs");
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
@@ -466,27 +470,55 @@ public class CrearPersonas extends javax.swing.JFrame {
             }
         });
 
+        jLabel40.setText("Buscar Identificación:");
+
+        txt_buscar_borrar.setToolTipText("");
+        txt_buscar_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_buscar_borrarActionPerformed(evt);
+            }
+        });
+
+        btn_borrar.setText("Borrar");
+        btn_borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_borrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1297, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(ActualizarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1297, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel40)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_buscar_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)
+                        .addComponent(btn_borrar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ActualizarLista, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ActualizarLista, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txt_buscar_borrar)
+                    .addComponent(ActualizarLista, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE)
+                    .addComponent(btn_borrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 455, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
 
         jTabbedPane1.addTab("Listar", jPanel4);
@@ -1056,6 +1088,35 @@ public class CrearPersonas extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_identificacion1KeyTyped
 
+    private void txt_buscar_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_buscar_borrarActionPerformed
+       
+        
+    }//GEN-LAST:event_txt_buscar_borrarActionPerformed
+
+    private void btn_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_borrarActionPerformed
+        if (txt_buscar_borrar.getText().isEmpty()) {
+
+            JOptionPane.showMessageDialog(rootPane, "Por favor, verificar el campo de identificación está vacío", "Warning", JOptionPane.WARNING_MESSAGE);
+
+        } else {
+            int id_buscar_borrar = Integer.parseInt(txt_buscar_borrar.getText());
+            int existe_borrar = 0;
+            for (int i = 0; i < Empleados.size(); i++) {
+                if (id_buscar_borrar == Empleados.get(i).getId()) {
+                    existe_borrar = 1;
+                    indice_borrar = i;
+                }
+            }
+
+            if (existe_borrar == 1) {
+                Empleados.remove(indice_borrar);
+                mostrar();
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "La identificacion ingresada no existe", "Warning", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+    }//GEN-LAST:event_btn_borrarActionPerformed
+
     public void mostrar() {
 
         Object matriz[][] = new Object[Empleados.size()][19];
@@ -1098,10 +1159,6 @@ public class CrearPersonas extends javax.swing.JFrame {
             }
 
         });
-
-    }
-
-    public void buscar() {
 
     }
 
@@ -1148,6 +1205,7 @@ public class CrearPersonas extends javax.swing.JFrame {
     private com.toedter.calendar.JDateChooser JDC_FNac1;
     private com.toedter.calendar.JDateChooser JDC_FSalida;
     private com.toedter.calendar.JDateChooser JDC_FSalida1;
+    private javax.swing.JButton btn_borrar;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_guardar;
     private javax.swing.JButton btn_guardar1;
@@ -1191,6 +1249,7 @@ public class CrearPersonas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1214,6 +1273,7 @@ public class CrearPersonas extends javax.swing.JFrame {
     private javax.swing.JTextField txt_arl;
     private javax.swing.JTextField txt_arl1;
     private javax.swing.JTextField txt_buscar;
+    private javax.swing.JTextField txt_buscar_borrar;
     private javax.swing.JTextField txt_cargo;
     private javax.swing.JTextField txt_cargo1;
     private javax.swing.JTextField txt_cesantias;
